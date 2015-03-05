@@ -4,16 +4,46 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
+
 
 
 public class TipCalculatorActivity extends ActionBarActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip_calculator);
+        final EditText edtBillAmount = (EditText)findViewById(R.id.edtBillAmount);
+        Button btnCalculate = (Button)findViewById(R.id.btnCalculate);
+        final CheckBox chkRound = (CheckBox)findViewById(R.id.chkRound);
+        final TextView txtTipResult = (TextView)findViewById(R.id.txtTipResult);
+        btnCalculate.setOnClickListener( new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View v) {
+                                                 float bill = Float.valueOf(edtBillAmount.getText().toString());
+                                                 bill = bill *(float) 1.12;
+                                                 if(chkRound.isChecked()){
+                                                     Integer billInt = Math.round(bill);
+                                                     txtTipResult.setText(billInt.toString());
+                                                 }else{
+                                                     txtTipResult.setText(
+                                                             String.format("%.2f%n",bill)
+                                                        );
+                                                 }
+
+
+                                             }
+                                         }
+        );
 
     }
+
 
 
     @Override
