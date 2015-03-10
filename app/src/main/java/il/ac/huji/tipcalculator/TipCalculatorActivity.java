@@ -27,7 +27,7 @@ public class TipCalculatorActivity extends ActionBarActivity {
                                              @Override
                                              public void onClick(View v) {
                                                  float bill = Float.valueOf(edtBillAmount.getText().toString());
-                                                 bill = bill *(float) 1.12;
+                                                 bill = bill *(float) 0.12;
                                                  if(chkRound.isChecked()){
                                                      Integer billInt = Math.round(bill);
                                                      txtTipResult.setText(billInt.toString());
